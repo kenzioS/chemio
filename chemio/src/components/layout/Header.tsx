@@ -30,10 +30,10 @@ export function Header({ view, onNavigateHome, onOpenLogin, onSignOut }: HeaderP
       {!isTeacherView && (
         <button
           type="button"
-          className="btn btn-outline header-btn"
+          className="header-btn"
           onClick={onOpenLogin}
         >
-          Log in
+          LOG IN
         </button>
       )}
       {isTeacherView && <UserMenu onSignOut={onSignOut} />}

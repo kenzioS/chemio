@@ -8,7 +8,7 @@ export function HomePathSelector({
   onChooseTeacher,
 }: HomePathSelectorProps) {
   return (
-    <main className="main">
+    <main className="main home-main">
       <h1 className="question">What is your path?</h1>
       <div className="path-actions">
         <button

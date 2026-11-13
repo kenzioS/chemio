@@ -34,11 +34,7 @@ export function UserMenu({ onSignOut }: UserMenuProps) {
         >
           {'>'}
         </span>
-        <span className="menu-lines" aria-hidden="true">
-          <span className="menu-line" />
-          <span className="menu-line" />
-          <span className="menu-line" />
-        </span>
+        <span className="menu-text">MENU</span>
       </button>
       {isOpen && (
         <ul className="menu-dropdown" role="menu">
