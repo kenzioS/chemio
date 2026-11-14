@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { Header } from './components/layout/Header'
 import { HomePathSelector } from './features/home/components/HomePathSelector'
-import { ExperimentsGrid } from './features/experiments/components/ExperimentsGrid'
+import { StudentExperimentsView } from './features/experiments/components/StudentExperimentsView'
 import { TeacherDashboard } from './features/teacher/components/TeacherDashboard'
 import { TeacherLoginModal } from './features/auth/components/TeacherLoginModal'
 import type { View } from './types/navigation'
@@ -45,7 +45,7 @@ function App() {
       )}
 
       {view === 'student' && (
-        <ExperimentsGrid onBack={() => setView('home')} />
+        <StudentExperimentsView onBackToHome={() => setView('home')} />
       )}
 
       {view === 'teacher' && <TeacherDashboard />}

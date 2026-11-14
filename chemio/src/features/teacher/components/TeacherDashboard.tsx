@@ -3,7 +3,6 @@ export function TeacherDashboard() {
     <main className="teacher-main">
       <div className="teacher-content">
         <header className="teacher-header">
-          <span className="teacher-badge">Teacher Portal</span>
           <h1 className="teacher-title">How to use Chem.io</h1>
           <p className="teacher-description">
             Chem.io is an interactive virtual chemistry platform built for educators. It enables you to demonstrate virtual chemical reactions in the classroom, assign safe lab simulations to students, and monitor their learning outcomes.
@@ -12,7 +11,6 @@ export function TeacherDashboard() {
 
         <section className="teacher-guide-grid">
           <article className="teacher-guide-card">
-            <div className="teacher-card-number">01</div>
             <h2 className="teacher-card-title">Direct Students to Experiments</h2>
             <p className="teacher-card-text">
               Have your students open <strong>chem.io</strong> and click the <strong>I am student</strong> button. They will access 16 curated virtual lab experiments covering titrations, flame tests, gas laws, and polymer synthesis.
@@ -20,7 +18,6 @@ export function TeacherDashboard() {
           </article>
 
           <article className="teacher-guide-card">
-            <div className="teacher-card-number">02</div>
             <h2 className="teacher-card-title">Configure Classroom Settings</h2>
             <p className="teacher-card-text">
               Click the <strong>MENU</strong> button in the top-right header and select <strong>Setting</strong> to customize active lab modules, adjust reactant concentrations, or toggle guided hints for your syllabus.
@@ -28,7 +25,6 @@ export function TeacherDashboard() {
           </article>
 
           <article className="teacher-guide-card">
-            <div className="teacher-card-number">03</div>
             <h2 className="teacher-card-title">Review Student Results</h2>
             <p className="teacher-card-text">
               Open the <strong>Results</strong> tab from the <strong>MENU</strong> to inspect student completion rates, view quiz responses, and track how accurately students executed each experiment step.
@@ -36,7 +32,6 @@ export function TeacherDashboard() {
           </article>
 
           <article className="teacher-guide-card">
-            <div className="teacher-card-number">04</div>
             <h2 className="teacher-card-title">Present Live Demonstrations</h2>
             <p className="teacher-card-text">
               Use your projector or smartboard to walk students through hazardous or costly chemical reactions before entering the physical laboratory, helping reinforce lab safety and expected reaction behaviors.
