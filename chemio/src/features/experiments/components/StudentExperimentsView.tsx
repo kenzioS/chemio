@@ -4,6 +4,8 @@ import { ExperimentsGrid } from './ExperimentsGrid'
 import { ExperimentDetail } from './ExperimentDetail'
 import { ExperimentToolbar } from './ExperimentToolbar'
 
+const PAGE_SIZE = 12
+
 interface StudentExperimentsViewProps {
   onBackToHome: () => void
 }
@@ -11,6 +13,7 @@ interface StudentExperimentsViewProps {
 export function StudentExperimentsView({ onBackToHome }: StudentExperimentsViewProps) {
   const [selectedExperimentId, setSelectedExperimentId] = useState<number | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
 
   const selectedExperiment = EXPERIMENTS.find((e) => e.id === selectedExperimentId) ?? null
 
@@ -24,6 +27,23 @@ export function StudentExperimentsView({ onBackToHome }: StudentExperimentsViewP
     )
   }, [searchQuery])
 
+  const pageCount = Math.max(1, Math.ceil(filteredExperiments.length / PAGE_SIZE))
+  const activePage = Math.min(currentPage, pageCount)
+  const visibleExperiments = filteredExperiments.slice(
+    (activePage - 1) * PAGE_SIZE,
+    activePage * PAGE_SIZE
+  )
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query)
+    setCurrentPage(1)
+  }
+
+  const handleResetSearch = () => {
+    setSearchQuery('')
+    setCurrentPage(1)
+  }
+
   return (
     <main className="student-main">
       {selectedExperiment ? (
@@ -35,13 +55,18 @@ export function StudentExperimentsView({ onBackToHome }: StudentExperimentsViewP
       ) : (
         /* In the grid view: show toolbar with All Experiments button & Search Bar */
         <>
-          <ExperimentToolbar
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            onResetSearch={() => setSearchQuery('')}
-          />
           <ExperimentsGrid
-            experiments={filteredExperiments}
+            experiments={visibleExperiments}
+            currentPage={activePage}
+            pageCount={pageCount}
+            toolbar={
+              <ExperimentToolbar
+                searchQuery={searchQuery}
+                onSearchChange={handleSearchChange}
+                onResetSearch={handleResetSearch}
+              />
+            }
+            onPageChange={setCurrentPage}
             onBack={onBackToHome}
             onSelectExperiment={(exp) => setSelectedExperimentId(exp.id)}
           />

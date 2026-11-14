@@ -29,7 +29,7 @@ function App() {
   }
 
   return (
-    <div className="page">
+    <div className={`page ${view === 'teacher' ? 'page-teacher' : ''}`}>
       <Header
         view={view}
         onNavigateHome={() => setView('home')}

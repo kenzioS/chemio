@@ -11,16 +11,6 @@ export function ExperimentToolbar({
 }: ExperimentToolbarProps) {
   return (
     <div className="experiment-toolbar" role="toolbar" aria-label="Experiments toolbar">
-      <button
-        type="button"
-        className="experiment-tab-btn active"
-        onClick={onResetSearch}
-        title="View all experiments"
-      >
-        <span className="tab-icon">▦</span>
-        <span className="tab-label">All Experiments</span>
-      </button>
-
       <div className="experiments-search-box">
         <svg
           className="search-icon"
