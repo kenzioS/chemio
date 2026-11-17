@@ -1,15 +1,17 @@
 import { useState } from 'react'
-import type { TeacherCredentials } from '../types'
+import type { LoginCredentials } from '../types'
 
-interface TeacherLoginModalProps {
+interface LoginModalProps {
   isOpen: boolean
+  title: string
   onClose: () => void
-  onLogin: (credentials: TeacherCredentials) => void
+  onLogin: (credentials: LoginCredentials) => void
 }
 
-export function TeacherLoginModal({ isOpen, onClose, onLogin }: TeacherLoginModalProps) {
+export function LoginModal({ isOpen, title, onClose, onLogin }: LoginModalProps) {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [school, setSchool] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -20,6 +22,7 @@ export function TeacherLoginModal({ isOpen, onClose, onLogin }: TeacherLoginModa
     if (
       firstName.trim() === '' ||
       lastName.trim() === '' ||
+      school.trim() === '' ||
       email.trim() === '' ||
       password.trim() === ''
     ) {
@@ -29,6 +32,7 @@ export function TeacherLoginModal({ isOpen, onClose, onLogin }: TeacherLoginModa
     onLogin({
       firstName: firstName.trim(),
       lastName: lastName.trim(),
+      school: school.trim(),
       email: email.trim(),
       password,
     })
@@ -44,7 +48,7 @@ export function TeacherLoginModal({ isOpen, onClose, onLogin }: TeacherLoginModa
         onClick={(event) => event.stopPropagation()}
       >
         <h2 id="login-title" className="modal-title">
-          Log in
+          {title}
         </h2>
         <form className="modal-form" onSubmit={handleSubmit}>
           <div className="field-row">
@@ -73,6 +77,18 @@ export function TeacherLoginModal({ isOpen, onClose, onLogin }: TeacherLoginModa
               />
             </label>
           </div>
+          <label className="field">
+            <span className="field-label">School</span>
+            <input
+              className="input"
+              type="text"
+              name="school"
+              value={school}
+              onChange={(event) => setSchool(event.target.value)}
+              placeholder="e.g. Springfield High School"
+              required
+            />
+          </label>
           <label className="field">
             <span className="field-label">Email</span>
             <input
@@ -108,4 +124,3 @@ export function TeacherLoginModal({ isOpen, onClose, onLogin }: TeacherLoginModa
     </div>
   )
 }
-

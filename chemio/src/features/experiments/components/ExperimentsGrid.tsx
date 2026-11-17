@@ -8,7 +8,7 @@ interface ExperimentsGridProps {
   pageCount: number
   toolbar?: ReactNode
   onPageChange: (page: number) => void
-  onBack: () => void
+  onBack?: () => void
   onSelectExperiment?: (experiment: Experiment) => void
 }
 
@@ -25,13 +25,15 @@ export function ExperimentsGrid({
     <div className="student-grid-wrapper">
       <div className="student-header">
         <h1 className="student-heading">Chemichal Experiments</h1>
-        <button
-          type="button"
-          className="btn btn-outline student-back-btn"
-          onClick={onBack}
-        >
-          ← Back
-        </button>
+        {onBack && (
+          <button
+            type="button"
+            className="btn btn-outline student-back-btn"
+            onClick={onBack}
+          >
+            ← Back
+          </button>
+        )}
       </div>
 
       {toolbar}
